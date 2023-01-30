@@ -24,4 +24,17 @@ body {
     font-size       : 1.6rem;
     line-height     : 1.5;
     text-rendering  : optimizeSpeed;
+    color           : #333;
+}
+
+button,
+input,
+[tabindex] {
+    border   : none;
+    outline  : none;
+}
+
+a[href] {
+    color            : #333;
+    text-decoration  : none;
 }
