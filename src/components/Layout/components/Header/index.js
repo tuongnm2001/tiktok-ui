@@ -15,7 +15,22 @@ const cx = classNames.bind(style)
 const MENU_ITEM = [
     {
         icon : <FontAwesomeIcon icon={faEarthAsia}/>,
-        title:'English'
+        title:'English',
+        children:{
+            title:'Language',
+            data:[
+                {   type  :'language',
+                    code  :'en',
+                    title :'English'
+                },
+
+                {
+                    type  :'language',
+                    code  :'vi',
+                    title :'Tiếng Việt'
+                }
+            ]
+        }
     },
 
     {
@@ -39,6 +54,16 @@ function Header() {
             setSearchResult([])
         },0)
     })
+
+    //handle logic
+    const handleMenuOnchange = (menuItem) =>{
+        switch(menuItem.type){
+            case 'language' : 
+                // handle change language
+                break ;
+                default : 
+        }
+    }
 
     return <header className={cx('wrapper')}>
         <div className={cx('content')}>
@@ -82,7 +107,7 @@ function Header() {
                 <Button text >Upload</Button>
                 <Button primary>Login</Button>
 
-                <Menu items={MENU_ITEM}>
+                <Menu items={MENU_ITEM} onChange={handleMenuOnchange}>
                     <button className={cx('more-btn')}>
                         <FontAwesomeIcon icon={faEllipsisVertical}/>
                     </button>

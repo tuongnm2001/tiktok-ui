@@ -5,8 +5,9 @@
     --primary  : #fe2c55;
 
     //Default Layout
-    --default-layout-header-height  : 60px;
-    --default-layout-width          : 1150px;
+    --default-layout-header-height      : 60px;
+    --default-layout-width              : 1150px;
+    --default-layout-horizontal-spacer  : 24px;
 }
 
 * {
@@ -22,7 +23,7 @@ html {
 body {
     font-family     : 'Roboto', sans-serif;
     font-size       : 1.6rem;
-    line-height     : 3.5;
+    line-height     : 1.5;
     text-rendering  : optimizeSpeed;
     color           : #333;
 }
