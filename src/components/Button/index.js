@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import classNames from "classnames/bind";
 import { Link } from "react-router-dom";
 import styles from './Button.module.scss'
@@ -5,21 +6,21 @@ import styles from './Button.module.scss'
 const cx = classNames.bind(styles)
 
 function Button({
-    to , 
-    href , 
-    primary=false, 
-    outline = false ,
-    small=false,
-    large=false,
-    text=false, 
-    disabled=false,
+    to,
+    href,
+    primary = false,
+    outline = false,
+    small = false,
+    large = false,
+    text = false,
+    disabled = false,
     rounded = false,
-    children , 
+    children,
     onClick,
     className,
     leftIcon,
     rightIcon,
-    ...passProps}) {
+    ...passProps }) {
 
     let Comp = 'button'
     const props = {
@@ -28,40 +29,61 @@ function Button({
     }
 
     //remove event listener when disable
-    if(disabled){
-        Object.keys(props).forEach((key)=>{
-            if(key.startsWith('on')&& typeof props[key]=== 'function'){
+    if (disabled) {
+        Object.keys(props).forEach((key) => {
+            if (key.startsWith('on') && typeof props[key] === 'function') {
                 delete props[key];
             }
         })
     }
 
-    if(to){
+    if (to) {
         props.to = to
-        Comp= Link
-    }else if(href){
+        Comp = Link
+    } else if (href) {
         props.href = href
-        Comp='a'
+        Comp = 'a'
     }
 
-    let classes = cx('wrapper' , {
-        primary ,
+    let classes = cx('wrapper', {
+        primary,
         outline,
         small,
         large,
         text,
         disabled,
         rounded,
-        [className]:className,
+        [className]: className,
     })
 
     return (
         <Comp className={classes} {...props}>
             {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
             <span className={cx('title')}>{children}</span>
-            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>} 
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     );
+}
+
+Button.propTypes = {
+    children: PropTypes.node.isRequired
+}
+
+Button.propTypes = {
+    to: PropTypes.string,
+    href: PropTypes.string,
+    primary: PropTypes.bool,
+    outline: PropTypes.bool,
+    text: PropTypes.bool,
+    rounded: PropTypes.bool,
+    disabled: PropTypes.bool,
+    small: PropTypes.bool,
+    large: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+    className: PropTypes.string,
+    leftIcon: PropTypes.node,
+    rightIcon: PropTypes.node,
+    onClick: PropTypes.func,
 }
 
 export default Button
