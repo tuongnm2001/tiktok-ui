@@ -13,7 +13,7 @@ const defaultFn = () => {
 
 }
 
-function Menu({ children, items = [], onChange = defaultFn }) {
+function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
 
     const [history, setHistory] = useState([{ data: items }])
     const current = history[history.length - 1]
@@ -32,7 +32,12 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     }
 
     return (
-        <Tippy offset={[12, 8]} interactive placement='bottom-end' delay={[0, 500]}
+        <Tippy
+            offset={[12, 8]}
+            interactive
+            hideOnClick={hideOnClick}
+            placement='bottom-end'
+            delay={[0, 500]}
             render={attrs => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PropperWrapper className={cx('menu-popper')}>
