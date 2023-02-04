@@ -12,7 +12,9 @@ import {
     faUser,
     faCoins,
     faGear,
-    faSignOut
+    faSignOut,
+    faMessage,
+    faInbox
 } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/';
 import Menu from '~/components/Popper/Menu';
@@ -116,9 +118,21 @@ function Header() {
             <div className={cx('actions')}>
                 {currentUser ? (
                     <>
-                        <Tippy delay={[0, 200]} content='Upload video'>
+                        <Tippy delay={[0, 50]} content='Upload video' placement='bottom'>
                             <button className={cx('action-btn')}>
                                 <FontAwesomeIcon icon={faCloudUpload} />
+                            </button>
+                        </Tippy>
+
+                        <Tippy delay={[0, 50]} content='Message' placement='bottom'>
+                            <button className={cx('action-btn')}>
+                                <FontAwesomeIcon icon={faMessage} />
+                            </button>
+                        </Tippy>
+
+                        <Tippy delay={[0, 50]} content='Inbox' placement='bottom'>
+                            <button className={cx('action-btn')}>
+                                <FontAwesomeIcon icon={faInbox} />
                             </button>
                         </Tippy>
                     </>
